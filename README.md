@@ -1,26 +1,23 @@
-# Outdated Template Detector
+<p align="center">
+  <img src="assets/readme/banner.svg" width="100%" alt="Outdated Template Detector: checks a Word or PDF document's footer against the master template list before the document goes to review.">
+</p>
 
-Detects whether a Word/PDF document uses the latest approved QMS template — before it goes to review.
+In a quality-managed company, every controlled document has to be built on the current approved template. A document started from an old copy gets caught late, in review, and goes back to its author. This tool catches it first: it reads the Template ID and version from the document's footer, looks them up in the master template list and returns one of four verdicts with a plain message.
+
+<p align="center">
+  <img src="assets/readme/proof.svg" width="100%" alt="In numbers: 4 verdicts, PASS, WARN, FAIL and FLAG; 29 of 31 test checks pass, the other 2 need LibreOffice; no AI calls in the decision.">
+</p>
 
 ## How it works
 
-```
-Document (.docx/.pdf)
-        │
-        ▼
-extractor.py  → reads footer → regex → (Template_ID, Version)
-        │           (OCR fallback only for scanned PDFs with no text layer)
-        ▼
-checker.py    → looks up Template_ID in master_list.xlsx
-        │
-        ▼
-   Verdict: PASS / WARN / FAIL / FLAG  + human-readable message
-```
+<p align="center">
+  <img src="assets/readme/how-it-works.svg" width="100%" alt="How it works: a .docx or .pdf goes to extractor.py, which reads the footer with a regex and falls back to OCR, then checker.py looks it up in master_list.xlsx and returns PASS, WARN, FAIL or FLAG.">
+</p>
 
-The pass/fail decision is **deterministic** (regex + table lookup) — no AI in the
-decision path. That matters in a regulated environment: a rule-based check is far
-easier to validate and audit than a probabilistic one. AI/OCR is only used as a
-fallback for scanned documents with no extractable text layer.
+The decision is **deterministic**: a regex and a table lookup, with no AI in the
+decision path. That matters in a regulated environment, because a rule-based check is far
+easier to validate and audit than a probabilistic one. OCR is only used as a
+fallback for scanned PDFs with no text layer.
 
 ## Files
 
@@ -31,13 +28,13 @@ fallback for scanned documents with no extractable text layer.
 | `checker.py` | Looks up the extracted ID against the master list, returns a verdict |
 | `app.py` | Streamlit demo UI — upload a document, get an instant verdict |
 | `sample_docs/` | 4 sample documents, one per verdict type |
-| `tests/test_cases.py` | 14 test cases covering all verdict paths |
+| `tests/test_cases.py` | 31 checks across every verdict path and the edge cases below |
 
 ## Run it
 
 ```bash
 pip install python-docx pdfplumber pandas openpyxl streamlit
-python3 tests/test_cases.py      # run the test suite
+python3 tests/test_cases.py      # run the test suite (prints a pass/fail summary)
 streamlit run app.py             # launch the demo UI
 ```
 
@@ -63,10 +60,13 @@ column headers match.
 
 ## Tested edge cases
 
-The suite in `tests/test_cases.py` has 31 passing checks across 4 sections —
-master list integrity, direct lookup logic, end-to-end file tests, and edge
-cases. The edge-case section specifically covers issues found (and fixed)
-while stress-testing this build:
+The suite in `tests/test_cases.py` has 31 checks in 4 sections: master list
+integrity, direct lookup logic, end-to-end file tests, and edge cases. On a
+fresh machine 29 pass. The other two convert `.docx` to PDF through a
+LibreOffice helper at a fixed path (`/mnt/skills/public/docx/scripts/office/soffice.py`)
+from the environment the tests were written in, so they fail anywhere else
+until that path is changed. The edge-case section covers issues found (and
+fixed) while stress-testing this build:
 
 - Lowercase / ALL CAPS Template IDs and version labels
 - Non-numeric version strings (e.g. a letter-based "Rev C" scheme) — flags
@@ -102,3 +102,7 @@ while stress-testing this build:
   reading the Excel file per document.
 - Track extraction-failure and "ID not found" rates as leading indicators that
   the regex or master list needs attention.
+
+<p align="center">
+  <a href="https://github.com/JustKamlesH21"><img src="assets/readme/footer.svg" width="100%" alt="Part of Kamlesh OS. More projects on github.com/JustKamlesH21"></a>
+</p>
