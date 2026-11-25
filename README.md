@@ -19,6 +19,12 @@ decision path. That matters in a regulated environment, because a rule-based che
 easier to validate and audit than a probabilistic one. OCR is only used as a
 fallback for scanned PDFs with no text layer.
 
+## Architecture
+
+<p align="center">
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/architecture-m.svg"><img src="assets/readme/architecture.svg" width="100%" alt="Architecture. input: Document, app.py; read · extractor.py: Footer regex, OCR fallback; check · checker.py: master_list.xlsx, Compare versions; verdict: PASS / WARN, FAIL / FLAG"></picture>
+</p>
+
 ## Files
 
 | File | Purpose |
