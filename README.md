@@ -1,21 +1,21 @@
 <p align="center">
-  <picture><source media="(max-width: 767px)" srcset="assets/readme/banner-m.svg"><img src="assets/readme/banner.svg" width="100%" alt="Outdated Template Detector: checks a Word or PDF document's footer against the master template list before the document goes to review."></picture>
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/banner-m.png"><img src="assets/readme/banner.svg" width="100%" alt="Outdated Template Detector: checks a Word or PDF document's footer against the master template list before the document goes to review."></picture>
 </p>
 
 In a quality-managed company, every controlled document has to be built on the current approved template. A document started from an old copy gets caught late, in review, and goes back to its author. This tool catches it first: it reads the Template ID and version from the document's footer, looks them up in the master template list and returns one of four verdicts with a plain message.
 
 <p align="center">
-  <picture><source media="(max-width: 767px)" srcset="assets/readme/proof-m.svg"><img src="assets/readme/proof.svg" width="100%" alt="In numbers: 4 verdicts, PASS, WARN, FAIL and FLAG; 29 of 31 test checks pass, the other 2 need LibreOffice; no AI calls in the decision."></picture>
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/proof-m.png"><img src="assets/readme/proof.svg" width="100%" alt="In numbers: 4 verdicts, PASS, WARN, FAIL and FLAG; 29 of 31 test checks pass, the other 2 need LibreOffice; no AI calls in the decision."></picture>
 </p>
 
 <p align="center">
-  <picture><source media="(max-width: 767px)" srcset="assets/readme/glance-m.svg"><img src="assets/readme/glance.svg" width="100%" alt="At a glance. Built: Jul 2026; Stack: python-docx · pdfplumber · Streamlit; Status: 29 of 31 test checks pass"></picture>
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/glance-m.png"><img src="assets/readme/glance.svg" width="100%" alt="At a glance. Built: Jul 2026; Stack: python-docx · pdfplumber · Streamlit; Status: 29 of 31 test checks pass"></picture>
 </p>
 
 ## How it works
 
 <p align="center">
-  <picture><source media="(max-width: 767px)" srcset="assets/readme/how-it-works-m.svg"><img src="assets/readme/how-it-works.svg" width="100%" alt="How it works: a .docx or .pdf goes to extractor.py, which reads the footer with a regex and falls back to OCR, then checker.py looks it up in master_list.xlsx and returns PASS, WARN, FAIL or FLAG."></picture>
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/how-it-works-m.png"><img src="assets/readme/how-it-works.svg" width="100%" alt="How it works: a .docx or .pdf goes to extractor.py, which reads the footer with a regex and falls back to OCR, then checker.py looks it up in master_list.xlsx and returns PASS, WARN, FAIL or FLAG."></picture>
 </p>
 
 The decision is **deterministic**: a regex and a table lookup, with no AI in the
@@ -26,7 +26,7 @@ fallback for scanned PDFs with no text layer.
 ## Architecture
 
 <p align="center">
-  <picture><source media="(max-width: 767px)" srcset="assets/readme/architecture-m.svg"><img src="assets/readme/architecture.svg" width="100%" alt="Architecture. input: Document, app.py; read · extractor.py: Footer regex, OCR fallback; check · checker.py: master_list.xlsx, Compare versions; verdict: PASS / WARN, FAIL / FLAG"></picture>
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/architecture-m.png"><img src="assets/readme/architecture.svg" width="100%" alt="Architecture. input: Document, app.py; read · extractor.py: Footer regex, OCR fallback; check · checker.py: master_list.xlsx, Compare versions; verdict: PASS / WARN, FAIL / FLAG"></picture>
 </p>
 
 ## Files
@@ -114,5 +114,5 @@ fixed) while stress-testing this build:
   the regex or master list needs attention.
 
 <p align="center">
-  <a href="https://github.com/JustKamlesH21"><picture><source media="(max-width: 767px)" srcset="assets/readme/footer-m.svg"><img src="assets/readme/footer.svg" width="100%" alt="Part of Kamlesh OS. More projects on github.com/JustKamlesH21"></picture></a>
+  <a href="https://github.com/JustKamlesH21"><picture><source media="(max-width: 767px)" srcset="assets/readme/footer-m.png"><img src="assets/readme/footer.svg" width="100%" alt="Part of Kamlesh OS. More projects on github.com/JustKamlesH21"></picture></a>
 </p>
