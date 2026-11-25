@@ -8,6 +8,10 @@ In a quality-managed company, every controlled document has to be built on the c
   <picture><source media="(max-width: 767px)" srcset="assets/readme/proof-m.svg"><img src="assets/readme/proof.svg" width="100%" alt="In numbers: 4 verdicts, PASS, WARN, FAIL and FLAG; 29 of 31 test checks pass, the other 2 need LibreOffice; no AI calls in the decision."></picture>
 </p>
 
+<p align="center">
+  <picture><source media="(max-width: 767px)" srcset="assets/readme/glance-m.svg"><img src="assets/readme/glance.svg" width="100%" alt="At a glance. Built: Jul 2026; Stack: python-docx · pdfplumber · Streamlit; Status: 29 of 31 test checks pass"></picture>
+</p>
+
 ## How it works
 
 <p align="center">
